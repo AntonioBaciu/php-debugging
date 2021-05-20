@@ -62,3 +62,29 @@ foreach ($week as &$day) {
 }
 
 print_r($week);
+
+new_exercise(5);
+// -- Issue -- 
+// The array is printing every letter of the alfabet (a-z) and continues to 
+// print aa, ab, ac etc. 
+
+// -- Solution -- 
+// 1) Added an if statement to specify when the for loop have to stop
+//    In this case, it should stop when after reaching the last letter [z]
+
+// 2) Specified a condition to make it stop printing after the last letter.
+//    Using strlen() I specified the length of $letter has to be 1.
+//    Then I moved [array_push] inside the if statement, so it will run only if the
+//    comdition is true.
+
+// 3) The result worked, but the type of $letter was [int] instead of [string].
+//    Used strval($letter) to convert it to a string.
+
+$arr = [];
+for ($letter = 'a'; $letter <= 'z'; $letter++) {
+    if (strlen(strval($letter)) === 1) {
+        array_push($arr, $letter);
+    }
+}
+
+print_r($arr); // Array ([0] => a, [1] => b, [2] => c, ...) a-z alfabetical array
