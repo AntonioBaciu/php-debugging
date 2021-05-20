@@ -35,3 +35,18 @@ echo $monday;
 
 
 new_exercise(3);
+
+// Exercise #3:
+// -- Issue -- 
+// The displayed string starts from index 0 and stops at index 10 
+
+// -- Solution --
+// In order to skip the [“] character, the new string must start at index 3
+// and stop at index 10
+$str = '“Debugged ! Also very fun”';
+echo substr($str, 3, 10);
+
+
+new_exercise(4);
+
+// Exercise #4:
