@@ -19,7 +19,7 @@ function new_exercise($x)
     echo $block;
 }
 
-
+new_exercise(1);
 
 // Exercise #2:
 
@@ -116,6 +116,7 @@ new_exercise(6);
 // 3) Changed echo implode() to return implode() & echo $randname to return $randname
 // 4) Changed return implode() to return implode(" - ", $params)   ->   https://www.php.net/manual/en/function.implode.php
 // 5) Changed rand(0, count($test)) to rand(0, count($test) - 1) to avoid errors
+// 6) Removed unused function randomGenerate($arr, $amount)
 $arr = [];
 
 
@@ -128,16 +129,6 @@ function combineNames($str1 = "", $str2 = "")
         }
     }
     return implode(" - ", $params);
-}
-
-
-function randomGenerate($arr, $amount)
-{
-    for ($i = $amount; $i > 0; $i--) {
-        array_push($arr, randomHeroName());
-    }
-
-    return $amount;
 }
 
 function randomHeroName()
@@ -154,7 +145,7 @@ function randomHeroName()
 echo "Here is the name: " . combineNames();
 
 
-// Exercice #7:
+// Exercise #7:
 // Fix:
 // Replaced [return] with [echo]
 // Replaced [date] with [idate]  ->  https://www.php.net/manual/en/function.idate.php
@@ -167,7 +158,7 @@ function copyright(int $year)
 copyright(idate('Y'));
 
 
-// Exercice #8:
+// Exercise #8:
 
 // Fix: Replaced [||] with [&&] since the email AND the password 
 // should be correct to grant access
@@ -189,3 +180,55 @@ echo login('john@example.be', 'dfgidfgdfg');
 //no access
 echo login('wrong@example.be', 'wrong');
 //you can change things again!
+
+
+
+// Exercise #9:
+
+// Fix:
+// 1) Added [echo] to each isLinkValid()
+// 2) Replaced [== true] with [!== false]
+
+new_exercise(9);
+
+function isLinkValid(string $link)
+{
+    $unacceptables = array('https:', '.doc', '.pdf', '.jpg', '.jpeg', '.gif', '.bmp', '.png');
+
+    foreach ($unacceptables as $unacceptable) {
+        if (strpos($link, $unacceptable) !== false) {
+            return 'Unacceptable Found<br />';
+        }
+    }
+    return 'Acceptable<br />';
+}
+
+//invalid link
+echo isLinkValid('http://www.google.com/hack.pdf');
+//invalid link
+echo isLinkValid('https://google.com');
+//VALID link
+echo isLinkValid('http://google.com');
+//VALID link
+echo isLinkValid('http://google.com/test.txt');
+
+// Exercise #10:
+
+new_exercise(10);
+// Fix:
+// 1) Added $count = count($areTheseFruits)
+// 2) Added $i < $count
+
+//Filter the array $areTheseFruits to only contain valid fruits
+//do not change the arrays itself
+$areTheseFruits = ['apple', 'bear', 'beef', 'banana', 'cherry', 'tomato', 'car'];
+$validFruits = ['apple', 'pear', 'banana', 'cherry', 'tomato'];
+//from here on you can change the code
+$count = count($areTheseFruits);
+for ($i = 0; $i < $count; $i++) {
+    if (!in_array($areTheseFruits[$i], $validFruits)) {
+        unset($areTheseFruits[$i]);
+    }
+}
+var_dump($areTheseFruits);//do not change this
+// The count was decreasing so the loop prematurely exited the loop.
