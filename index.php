@@ -152,3 +152,16 @@ function randomHeroName()
 }
 
 echo "Here is the name: " . combineNames();
+
+
+// Exercice #7:
+// Fix:
+// Replaced [return] with [echo]
+// Replaced [date] with [idate]  ->  https://www.php.net/manual/en/function.idate.php
+new_exercise(7);
+function copyright(int $year)
+{
+    echo "&copy; $year BeCode";
+}
+//print the copyright
+copyright(idate('Y'));
