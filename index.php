@@ -19,9 +19,12 @@ function new_exercise($x)
     echo $block;
 }
 
-new_exercise(2);
+
 
 // Exercise #2:
+
+new_exercise(2);
+
 // -- Issue -- 
 // variable $monday is set to the element at index 1 of the array => displays tuesday
 
@@ -34,9 +37,10 @@ $monday = $week[0];
 echo $monday;
 
 
+// Exercise #3:
+
 new_exercise(3);
 
-// Exercise #3:
 // -- Issue -- 
 // The displayed string starts from index 0 and stops at index 10 
 
@@ -47,9 +51,9 @@ $str = '“Debugged ! Also very fun”';
 echo substr($str, 3, 10);
 
 
-new_exercise(4);
-
 // Exercise #4:
+
+new_exercise(4);
 
 // -- Issue -- 
 // substr() function displays the entire day name 
@@ -62,6 +66,10 @@ foreach ($week as &$day) {
 }
 
 print_r($week);
+
+
+
+// Exercise #5:
 
 new_exercise(5);
 // -- Issue -- 
@@ -80,11 +88,67 @@ new_exercise(5);
 // 3) The result worked, but the type of $letter was [int] instead of [string].
 //    Used strval($letter) to convert it to a string.
 
+// $arr = [];
+// for ($letter = 'a'; $letter <= 'z'; $letter++) {
+//     if (strlen(strval($letter)) < 2) {
+//         array_push($arr, $letter);
+//     }
+// }
+
+// OR make the loop run untill it encounters 'aa'
+
 $arr = [];
-for ($letter = 'a'; $letter <= 'z'; $letter++) {
-    if (strlen(strval($letter)) === 1) {
-        array_push($arr, $letter);
-    }
+for ($letter = 'a'; $letter !== 'aa'; $letter++) {
+
+    array_push($arr, $letter);
 }
 
 print_r($arr); // Array ([0] => a, [1] => b, [2] => c, ...) a-z alfabetical array
+
+
+
+// Exercise #6:
+
+new_exercise(6);
+// -- Fix --
+// 1) Added semicolon at the end of $hero_lastnames
+// 2) Added [&] before $param 
+// 3) Changed echo implode() to return implode() & echo $randname to return $randname
+// 4) Changed return implode() to return implode(" - ", $params)   ->   https://www.php.net/manual/en/function.implode.php
+// 5) Changed rand(0, count($test)) to rand(0, count($test) - 1) to avoid errors
+$arr = [];
+
+
+function combineNames($str1 = "", $str2 = "")
+{
+    $params = [$str1, $str2];
+    foreach ($params as &$param) {
+        if ($param == "") {
+            $param = randomHeroName();
+        }
+    }
+    return implode(" - ", $params);
+}
+
+
+function randomGenerate($arr, $amount)
+{
+    for ($i = $amount; $i > 0; $i--) {
+        array_push($arr, randomHeroName());
+    }
+
+    return $amount;
+}
+
+function randomHeroName()
+{
+    $hero_firstnames = ["captain", "doctor", "iron", "Hank", "ant", "Wasp", "the", "Hawk", "Spider", "Black", "Carol"];
+    $hero_lastnames = ["America", "Strange", "man", "Pym", "girl", "hulk", "eye", "widow", "panther", "daredevil", "marvel"];
+    $heroes = [$hero_firstnames, $hero_lastnames];
+    $test = [$heroes[0], $heroes[1]];
+    $randname = $test[rand(0, count($test) - 1)][rand(0, 10)];
+
+    return $randname;
+}
+
+echo "Here is the name: " . combineNames();
