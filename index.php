@@ -40,7 +40,7 @@ new_exercise(3);
 // -- Issue -- 
 // The displayed string starts from index 0 and stops at index 10 
 
-// -- Solution --
+// -- Solution --  info about substr() -> https://www.php.net/manual/en/function.substr.php
 // In order to skip the [“] character, the new string must start at index 3
 // and stop at index 10
 $str = '“Debugged ! Also very fun”';
@@ -50,3 +50,15 @@ echo substr($str, 3, 10);
 new_exercise(4);
 
 // Exercise #4:
+
+// -- Issue -- 
+// substr() function displays the entire day name 
+
+// -- Solution -- 
+// Missing [&] character
+
+foreach ($week as &$day) {
+    $day = substr($day, 0, strlen($day) - 3);
+}
+
+print_r($week);
