@@ -12,7 +12,7 @@ error_reporting(E_ALL);
 // $block = "Exercise $x" => $x is not defined
 // -- Solution -- -> define $x using it as a parameter
 
-echo "Exercise 1 starts here:";
+// echo "Exercise 1 starts here:";s
 function new_exercise($x)
 {
     $block = "<br/><hr/><br/><br/>Exercise $x starts here:<br/>";
